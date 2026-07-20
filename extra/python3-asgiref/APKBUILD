@@ -9,7 +9,7 @@ url="https://github.com/django/asgiref/"
 arch="noarch"
 license="BSD-3-Clause"
 makedepends="python3-gpep517 python3-setuptools python3-wheel"
-checkdepends="python3-pytest"
+checkdepends="python3-pytest python3-pytest-asyncio"
 source="https://files.pythonhosted.org/packages/source/a/asgiref/asgiref-$pkgver.tar.gz"
 builddir="$srcdir/asgiref-$pkgver"
 
