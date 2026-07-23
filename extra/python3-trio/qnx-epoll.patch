@@ -1,12 +1,12 @@
 diff --git a/src/trio/_core/_run.py b/src/trio/_core/_run.py
-index 9ecdada1..a55e96f1 100644
+index 9ecdada1..ea16d251 100644
 --- a/src/trio/_core/_run.py
 +++ b/src/trio/_core/_run.py
 @@ -3119,6 +3119,7 @@ if sys.platform == "win32":
  elif (
      sys.platform == "linux"
      or sys.platform == "android"
-+    or sys.platform == "qnx"
++    or sys.platform.startswith("qnx")
      or (not TYPE_CHECKING and hasattr(select, "epoll"))
  ):
      from ._generated_io_epoll import *
