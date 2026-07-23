@@ -1,14 +1,14 @@
 # Alpine-Maintainer: Natanael Copa <ncopa@alpinelinux.org>
 # Maintainer: Ethan Leir <eleir@qnx.com>
 pkgname=python3-openssl
-# version needs to be compatible with python3-cryptography
 pkgver=26.1.0
 pkgrel=0
 pkgdesc="Python3 wrapper module around the OpenSSL library"
 url="https://github.com/pyca/pyopenssl"
 arch="noarch"
 license="Apache-2.0"
-depends="python3 python3-cryptography python3-typing-extensions"
+# python3-cryptography requires rust.
+depends="python3 python3-typing-extensions"
 makedepends="
     python3-gpep517
     python3-setuptools
