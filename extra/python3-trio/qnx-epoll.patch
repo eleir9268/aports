@@ -23,3 +23,16 @@ index 9ecdada1..ea16d251 100644
      or (not TYPE_CHECKING and hasattr(select, "epoll"))
  ):
      from ._generated_io_epoll import *
+diff --git a/src/trio/lowlevel.py b/src/trio/lowlevel.py
+index b6621d47..d07d308c 100644
+--- a/src/trio/lowlevel.py
++++ b/src/trio/lowlevel.py
+@@ -84,7 +84,7 @@ if sys.platform != "win32" or (
+ 
+     # Kqueue-specific symbols
+     if (
+-        sys.platform != "linux" and (_t.TYPE_CHECKING or not hasattr(_select, "epoll"))
++        sys.platform != "linux" and not sys.platform.startswith("qnx") and (_t.TYPE_CHECKING or not hasattr(_select, "epoll"))
+     ) or (not _t.TYPE_CHECKING and "sphinx.ext.autodoc" in sys.modules):
+         from ._core import (
+             current_kqueue as current_kqueue,
