@@ -9,7 +9,7 @@ arch="all"
 license="MIT"
 makedepends="meson"
 subpackages="$pkgname-dev"
-source="$pkgname-$pkgver.tar.gz::https://github.com/recp/cglm/archive/v$pkgver.tar.gz"
+source="$pkgname-$pkgver.tar.gz::https://github.com/recp/cglm/archive/refs/tags/v$pkgver.tar.gz"
 
 build() {
     abuild-meson . build -Dbuild_tests=true
