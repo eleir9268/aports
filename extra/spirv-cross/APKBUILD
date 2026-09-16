@@ -9,9 +9,10 @@ arch="all"
 license="Apache-2.0"
 depends="libc++"
 depends_dev="libc++-dev"
-# Python is needed for building tests.
-makedepends="$depends_dev cmake ninja python3"
-subpackages="$pkgname-dev"
+# python3 and spirv-tools are needed for building tests.
+makedepends="$depends_dev cmake ninja python3 spirv-tools"
+checkdepends="python3 spirv-tools"
+subpackages="$pkgname-cli $pkgname-dev $pkgname-static"
 source="$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/$_pkgname/archive/refs/tags/vulkan-sdk-$pkgver.tar.gz"
 builddir="$srcdir/$_pkgname-vulkan-sdk-$pkgver"
 
@@ -24,7 +25,11 @@ build() {
     cmake -B build-cli -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_BUILD_TYPE=MinSizeRel
+        -DCMAKE_BUILD_TYPE=MinSizeRel \
+        -Dspirv-cross-glslang_EXECUTABLE="/usr/bin/glslangValidator" \
+        -Dspirv-cross-spirv-as_EXECUTABLE="/usr/bin/spirv-as" \
+        -Dspirv-cross-spirv-val_EXECUTABLE="/usr/bin/spirv-val" \
+        -Dspirv-cross-spirv-opt_EXECUTABLE="/usr/bin/spirv-opt"
 
     cmake -B build-shared -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -46,6 +51,18 @@ check() {
 package() {
     DESTDIR="$pkgdir" cmake --install build-cli
     DESTDIR="$pkgdir" cmake --install build-shared
+}
+
+static() {
+    default_static
+
+    amove usr/share/spirv_cross_c
+}
+
+cli() {
+    pkgdesc="$_pkgname CLI client"
+
+    amove usr/bin/spirv-cross
 }
 
 sha512sums="
