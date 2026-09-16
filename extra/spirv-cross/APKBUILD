@@ -26,10 +26,10 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
-        -Dspirv-cross-glslang_EXECUTABLE="/usr/bin/glslangValidator" \
-        -Dspirv-cross-spirv-as_EXECUTABLE="/usr/bin/spirv-as" \
-        -Dspirv-cross-spirv-val_EXECUTABLE="/usr/bin/spirv-val" \
-        -Dspirv-cross-spirv-opt_EXECUTABLE="/usr/bin/spirv-opt"
+        -Dspirv-cross-glslang="/usr/bin/glslangValidator" \
+        -Dspirv-cross-spirv-as="/usr/bin/spirv-as" \
+        -Dspirv-cross-spirv-val="/usr/bin/spirv-val" \
+        -Dspirv-cross-spirv-opt="/usr/bin/spirv-opt"
 
     cmake -B build-shared -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
