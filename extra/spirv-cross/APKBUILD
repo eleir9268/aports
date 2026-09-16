@@ -54,6 +54,12 @@ package() {
     DESTDIR="$pkgdir" cmake --install build-shared
 }
 
+dev() {
+    default_dev
+
+    amove usr/share/spirv_cross_c_shared
+}
+
 static() {
     default_static
 
