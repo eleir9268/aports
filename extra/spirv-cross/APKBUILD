@@ -58,6 +58,13 @@ static() {
     default_static
 
     amove usr/share/spirv_cross_c
+    amove usr/share/spirv_cross_core
+    amove usr/share/spirv_cross_cpp
+    amove usr/share/spirv_cross_glsl
+    amove usr/share/spirv_cross_hlsl
+    amove usr/share/spirv_cross_msl
+    amove usr/share/spirv_cross_reflect
+    amove usr/share/spirv_cross_util
     amove usr/lib/pkgconfig/spirv-cross-c.pc
 }
 
