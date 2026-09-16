@@ -13,7 +13,8 @@ depends_dev="libc++-dev"
 makedepends="$depends_dev cmake ninja python3 spirv-tools"
 checkdepends="python3 spirv-tools"
 subpackages="$pkgname-cli $pkgname-dev $pkgname-static"
-source="$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/$_pkgname/archive/refs/tags/vulkan-sdk-$pkgver.tar.gz"
+source="$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/$_pkgname/archive/refs/tags/vulkan-sdk-$pkgver.tar.gz
+    c_standard.patch"
 builddir="$srcdir/$_pkgname-vulkan-sdk-$pkgver"
 
 build() {
@@ -23,7 +24,6 @@ build() {
     # We need two separate builds in order to get both the CLI and a shared dist.
     # These installs do not overlap.
     cmake -B build-cli -G Ninja \
-        -DCMAKE_C_STANDARD=99 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
@@ -68,4 +68,5 @@ cli() {
 
 sha512sums="
 0c1fe48e73060df131658b18558e748ab5a64acdc0461f60b8d2af7c9b6043e2780abfd9ad844517149576b37a7ad7022b7aa1bc82fbcdcab7fee933e4f7940d  spirv-cross-1.4.321.0.tar.gz
+f743462ddbe554cfd85420efee43426ee4b5ff10bf5168316bc8d32f5d48745352c28f69ac6c64ad8e98a0c4936a066ef59767a84636835595a69117af4d95d3  c_standard.patch
 "
