@@ -23,6 +23,7 @@ build() {
     # We need two separate builds in order to get both the CLI and a shared dist.
     # These installs do not overlap.
     cmake -B build-cli -G Ninja \
+        -DCMAKE_C_STANDARD=99 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
