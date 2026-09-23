@@ -37,34 +37,21 @@ builddir="$srcdir/$_pkgname-qnx-release-$pkgver-r$_git_rev"
 
 build() {
     export CPPFLAGS="${CPPFLAGS} -D_QNX_SOURCE -Wno-error=incompatible-function-pointer-types"
-    cmake -B build-shared -G Ninja \
+    cmake -B build -G Ninja \
         -DCMAKE_C_COMPILER=clang \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_ASM_COMPILER=clang \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_SHARED_LIBS=True \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
+        -DSDL_SHARED=ON \
+        -DSDL_STATIC=ON \
         -DSDL_X11=0 \
         -DSDL_WAYLAND=1 \
         -DSDL_VIDEO=1 \
         -DSDL_AUDIO=1 \
         -DSDL_JOYSTICK=1 \
         -DSDL_TESTS=1
-    cmake --build build-shared
-
-    cmake -B build-static -G Ninja \
-        -DCMAKE_C_COMPILER=clang \
-        -DCMAKE_CXX_COMPILER=clang++ \
-        -DCMAKE_ASM_COMPILER=clang \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_SHARED_LIBS=False \
-        -DCMAKE_SKIP_INSTALL_RPATH=ON \
-        -DSDL_X11=0 \
-        -DSDL_WAYLAND=1 \
-        -DSDL_VIDEO=1 \
-        -DSDL_AUDIO=1 \
-        -DSDL_JOYSTICK=1
-    cmake --build build-static
+    cmake --build build
 }
 
 package() {
