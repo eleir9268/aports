@@ -46,7 +46,8 @@ build() {
 }
 
 check() {
-    ctest --test-dir build-cli || true # Another case of floating-point inaccuracies.
+    # Another case of floating-point inaccuracies.
+    ctest --test-dir build-cli -E "spirv-cross-test|spirv-cross-test-no-opt|spirv-cross-test-metal|spirv-cross-test-hlsl|spirv-cross-test-hlsl-no-opt|spirv-cross-test-opt|spirv-cross-test-metal-opt|spirv-cross-test-hlsl-opt|spirv-cross-test-reflection|spirv-cross-test-ue4|spirv-cross-test-ue4-opt|spirv-cross-test-ue4-no-opt"
 }
 
 package() {
