@@ -11,7 +11,7 @@ depends="libc++"
 depends_dev="libc++-dev"
 # python3 and spirv-tools are needed for building tests.
 makedepends="$depends_dev cmake glslang ninja python3 spirv-tools"
-checkdepends="python3 spirv-tools"
+checkdepends="glslang python3 spirv-tools"
 subpackages="$pkgname-cli $pkgname-static $pkgname-dev"
 source="spirv-cross-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Cross/archive/refs/tags/vulkan-sdk-$pkgver.tar.gz
     c_standard.patch"
