@@ -13,7 +13,7 @@ depends_dev="libc++-dev"
 makedepends="$depends_dev cmake ninja python3 spirv-tools"
 checkdepends="python3 spirv-tools"
 subpackages="$pkgname-cli $pkgname-static $pkgname-dev"
-source="$pkgname-$pkgver.tar.gz::https://github.com/KhronosGroup/$_pkgname/archive/refs/tags/vulkan-sdk-$pkgver.tar.gz
+source="spirv-cross-$pkgver.tar.gz::https://github.com/KhronosGroup/SPIRV-Cross/archive/refs/tags/vulkan-sdk-$pkgver.tar.gz
     c_standard.patch"
 builddir="$srcdir/$_pkgname-vulkan-sdk-$pkgver"
 
@@ -26,7 +26,7 @@ build() {
     cmake -B build-cli -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_BUILD_TYPE=MinSizeRel \
+        -DCMAKE_BUILD_TYPE=Release \
         -Dspirv-cross-glslang="/usr/bin/glslangValidator" \
         -Dspirv-cross-spirv-as="/usr/bin/spirv-as" \
         -Dspirv-cross-spirv-val="/usr/bin/spirv-val" \
@@ -35,7 +35,7 @@ build() {
     cmake -B build-shared -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_BUILD_TYPE=MinSizeRel \
+        -DCMAKE_BUILD_TYPE=Release \
         -DSPIRV_CROSS_CLI=OFF \
         -DSPIRV_CROSS_STATIC=OFF \
         -DSPIRV_CROSS_SHARED=ON \
