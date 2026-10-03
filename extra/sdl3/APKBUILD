@@ -22,8 +22,6 @@ makedepends="
      gles-headers
      wayland-dev
      wayland-protocols
-     qnx-usb-static
-     qnx-usb-dev
      libxkbcommon-static
      libxkbcommon-dev
      autoconf
@@ -55,13 +53,12 @@ build() {
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build-static
-    DESTDIR="$pkgdir" cmake --install build-shared
+    DESTDIR="$pkgdir" cmake --install build
 }
 
 check() {
     # Disable SDL_strtod() failures
-    ctest --test-dir build-shared -E "(testautomation|testautomation-no-simd)"
+    ctest --test-dir build -E "(testautomation|testautomation-no-simd)"
 }
 
 dev() {
@@ -70,5 +67,5 @@ dev() {
 }
 
 sha512sums="
-d384667334ee9199f8876b95d57ecbafa975d645778ae6b6a28e6dd9a6a7537d97c44e5c74735aeb619f716bac1769ea440102bc89f1d7ae35081a667c078f8c  sdl3-3.4.18-r0.tar.gz
+29927087a67d8f20a90401f17a1b5d1579fdaf4df381d2466dd2da14f812da344b90cb6051e2d2f9657b4f7a458dcba293afa38da6e1c17c5b9d1a8cb3fe11bb  sdl3-3.4.18-r0.tar.gz
 "
