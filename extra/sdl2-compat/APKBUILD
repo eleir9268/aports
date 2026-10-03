@@ -14,8 +14,6 @@ makedepends="
     qnx-alsa-dev
     qnx-screen-dev
     wayland-dev
-    qnx-usb-dev
-    qnx-usb-static
     libxkbcommon-dev
     libxkbcommon-static
     clang
