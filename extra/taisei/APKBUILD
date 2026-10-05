@@ -13,7 +13,7 @@ makedepends="meson cglm-dev freetype-dev libpng-dev libunibreak-dev libwebp-dev
 subpackages="$pkgname-doc"
 source="$pkgname-$pkgver.tar.gz::https://github.com/taisei-project/taisei/archive/refs/tags/v$pkgver.tar.gz
     fix-gles.patch"
-builddir="$srcdir/$pkgname-v$pkgver"
+builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
     meson setup build \
