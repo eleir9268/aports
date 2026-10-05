@@ -6,10 +6,10 @@ pkgdesc="Free Touhou Project fangame"
 url="https://github.com/taisei-project/taisei"
 arch="all"
 license="MIT AND CC-BY-4.0 AND LicenseRef-scancode-public-domain"
-depends="cglm freetype libcrypto3 libc++ libogg libpng libunibreak
+depends="cglm freetype libcrypto3 libc++ libogg libpng libunibreak libwebp
     libwebpdecoder opus sdl3 spirv-cross spirv-tools zlib zstd zstd-libs"
 makedepends="meson cglm-dev freetype-dev libc++-dev libogg-dev libpng-dev
-    libunibreak-dev libwebpdecoder-dev shaderc spirv-cross-dev spirv-tools-dev
+    libunibreak-dev libwebp-dev shaderc spirv-cross-dev spirv-tools-dev
     openssl-dev opus-dev sdl3-dev zlib-dev zstd-dev"
 subpackages="$pkgname-doc $pkgname-data"
 source="$pkgname-$pkgver.tar.gz::https://github.com/taisei-project/taisei/archive/refs/tags/v$pkgver.tar.gz
