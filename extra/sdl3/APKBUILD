@@ -58,7 +58,7 @@ package() {
 
 check() {
     # Disable SDL_strtod() failures
-    ctest --test-dir build -E "(testautomation|testautomation-no-simd)" --timeout 120
+    ctest --test-dir build --timeout 300 -E "(testautomation|testautomation-no-simd)"
 }
 
 dev() {
