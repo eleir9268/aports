@@ -12,11 +12,13 @@ makedepends="$depends_dev libogg-dev opus-dev"
 subpackages="$pkgname-dev $pkgname-doc"
 source="https://downloads.xiph.org/releases/opus/opusfile-$pkgver.tar.gz
     $pkgname-CVE-2022-47021-1.patch::https://github.com/xiph/opusfile/commit/0a4cd796df5b030cb866f3f4a5e41a4b92caddf5.patch
+    c89.patch
     "
 
 prepare() {
     default_prepare
     update_config_sub
+    (cd "$builddir" && autoreconf)
 }
 
 build() {
