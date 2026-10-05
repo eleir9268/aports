@@ -9,7 +9,7 @@ license="MIT AND CC-BY-4.0 AND LicenseRef-scancode-public-domain"
 depends="cglm freetype libcrypto3 libpng libunibreak libwebp sdl3 spirv-cross
     zlib zstd"
 makedepends="meson cglm-dev freetype-dev libpng-dev libunibreak-dev libwebp-dev
-    spirv-cross-dev openssl-dev sdl3-dev zlib-dev zstd-dev"
+    spirv-cross-dev spirv-tools openssl-dev sdl3-dev zlib-dev zstd-dev"
 subpackages="$pkgname-doc"
 source="$pkgname-$pkgver.tar.gz::https://github.com/taisei-project/taisei/archive/refs/tags/v$pkgver.tar.gz
     https://github.com/taisei-project/basis_universal/archive/380ef9389b38ec42506d5728dd05e94ac2f3c301.tar.gz
@@ -32,7 +32,6 @@ prepare() {
 build() {
     meson setup build \
         --buildtype=release \
-        --default-library=shared \
         -Dprefix=/usr \
         -Db_lto=false \
         -Dr_gles30=enabled
