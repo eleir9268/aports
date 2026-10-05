@@ -7,10 +7,11 @@ url="https://github.com/taisei-project/taisei"
 arch="all"
 license="MIT AND CC-BY-4.0 AND LicenseRef-scancode-public-domain"
 depends="cglm freetype libcrypto3 libc++ libogg libpng libunibreak libwebp
-    libwebpdecoder opus sdl3 spirv-cross spirv-tools zlib zstd zstd-libs"
+    libwebpdecoder opus opusfile sdl3 spirv-cross spirv-tools zlib zstd
+    zstd-libs"
 makedepends="meson cglm-dev freetype-dev libc++-dev libogg-dev libpng-dev
     libunibreak-dev libwebp-dev shaderc spirv-cross-dev spirv-tools-dev
-    openssl-dev opus-dev sdl3-dev zlib-dev zstd-dev"
+    openssl-dev opus-dev opusfile-dev sdl3-dev zlib-dev zstd-dev"
 subpackages="$pkgname-doc $pkgname-data"
 source="$pkgname-$pkgver.tar.gz::https://github.com/taisei-project/taisei/archive/refs/tags/v$pkgver.tar.gz
     https://github.com/taisei-project/basis_universal/archive/380ef9389b38ec42506d5728dd05e94ac2f3c301.tar.gz
