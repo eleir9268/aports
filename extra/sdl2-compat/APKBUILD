@@ -1,5 +1,6 @@
 # Alpine-Maintainer: Achill Gilgenast <achill@achill.org>
 # Maintainer: Ethan Leir <eleir@qnx.com>
+# Contributor: Martin Krastev <mkrastev@qnx.com>
 pkgname=sdl2-compat
 pkgver=2.32.74
 pkgrel=0
