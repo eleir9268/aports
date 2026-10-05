@@ -30,7 +30,7 @@ makedepends="
      ninja"
 subpackages="$pkgname-dev $pkgname-dbg $pkgname-doc"
 _git_rev=0
-source="$pkgname-$pkgver-r$_git_rev.tar.gz::https://www.github.com/eleir9268/$_pkgname/archive/refs/tags/qnx-release-$pkgver-r$_git_rev.tar.gz"
+source="$pkgname-$pkgver-r$_git_rev.tar.gz::https://www.github.com/qnx-ports/$_pkgname/archive/refs/tags/qnx-release-$pkgver-r$_git_rev.tar.gz"
 builddir="$srcdir/$_pkgname-qnx-release-$pkgver-r$_git_rev"
 
 build() {
