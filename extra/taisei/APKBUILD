@@ -11,7 +11,7 @@ depends="cglm freetype libcrypto3 libc++ libogg libpng libunibreak
 makedepends="meson cglm-dev freetype-dev libc++-dev libogg-dev libpng-dev
     libunibreak-dev libwebpdecoder-dev shaderc spirv-cross-dev spirv-tools-dev
     openssl-dev opus-dev sdl3-dev zlib-dev zstd-dev"
-subpackages="$pkgname-doc"
+subpackages="$pkgname-doc $pkgname-data"
 source="$pkgname-$pkgver.tar.gz::https://github.com/taisei-project/taisei/archive/refs/tags/v$pkgver.tar.gz
     https://github.com/taisei-project/basis_universal/archive/380ef9389b38ec42506d5728dd05e94ac2f3c301.tar.gz
     https://github.com/taisei-project/SDL_GameControllerDB/archive/7988b5e84c31616200ee2ffd2347386c6b3165a8.tar.gz
@@ -45,6 +45,13 @@ package() {
 
 check() {
     meson test --print-errorlogs -C build
+}
+
+data() {
+    pkgdesc="Data files for taisei"
+
+    # Runs after doc
+    amove usr/share
 }
 
 sha512sums="
