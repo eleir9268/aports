@@ -60,10 +60,10 @@ check() {
     local skip=""
     if [[ $CARCH == "aarch64" ]]; then
         # Flaky on build machines.
-        skip="testatomic"
+        skip="testatomic|"
     fi
     # Disable SDL_strtod() failures
-    ctest --test-dir build -E "($skip|testautomation|testautomation-no-simd)"
+    ctest --test-dir build -E "(${skip}testautomation|testautomation-no-simd)"
 }
 
 dev() {
