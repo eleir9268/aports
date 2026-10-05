@@ -1,0 +1,39 @@
+# Maintainer: Ethan Leir <eleir@qnx.com>
+pkgname=taisei
+pkgver=1.4.6
+pkgrel=0
+pkgdesc="Free Touhou Project fangame"
+url="https://github.com/taisei-project/taisei"
+arch="all"
+license="MIT AND CC-BY-4.0 AND LicenseRef-scancode-public-domain"
+depends="cglm freetype libcrypto3 libpng libunibreak libwebp sdl3 spirv-cross
+    zlib zstd"
+makedepends="meson cglm-dev freetype-dev libpng-dev libunibreak-dev libwebp-dev
+    spirv-cross-dev openssl-dev sdl3-dev zlib-dev zstd-dev"
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/taisei-project/taisei/archive/refs/tags/v$pkgver.tar.gz
+    fix-gles.patch"
+builddir="$srcdir/$pkgname-v$pkgver"
+
+build() {
+    meson setup build \
+        --buildtype=release \
+        --default-library=shared \
+        -Dprefix=/usr \
+        -Db_lto=false \
+        -Dr_gles30=enabled
+    meson compile -C build
+}
+
+package() {
+    DESTDIR="$pkgdir" meson install --no-rebuild -C build
+}
+
+check() {
+    meson test --print-errorlogs -C build
+}
+
+sha512sums="
+461ca4671602948ecef7d0f1cb0a8c45348bcbc5f177aa5da20f160d55602b642c1d20b6da8de1c55fabc36600695664c5b2d0d83b913131f0dc28b078f01631  taisei-1.4.6.tar.gz
+f067b2084b05c9fe306ed0472f6d18e49ed41586944f43d507079fc051cd724280c08b7e4543cf5cf75ebaf5488dd580eb07c50ca54c293550a6990c9270da53  fix-gles.patch
+"
