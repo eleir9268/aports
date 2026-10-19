@@ -35,12 +35,19 @@ check() {
     # We're not packaging blackd yet since it pulls in extra dependencies.
     rm tests/test_blackd.py
     # Skipping some tests which fail do to diff versions of dependencies. None are substantial.
-    .testenv/bin/python3 -m pytest -vv \
-        --deselect tests/test_black.py::BlackTestCase::test_expression_diff \
-        --deselect tests/test_black.py::BlackTestCase::test_read_pyproject_toml \
-        --deselect tests/test_black.py::BlackTestCase::test_read_pyproject_toml_from_stdin \
-        --deselect tests/test_black.py::BlackTestCase::test_skip_magic_trailing_comma \
+    skip_tests=(
+        # Skipping some tests which fail do to diff versions of dependencies. None are substantial.
+        --deselect tests/test_black.py::BlackTestCase::test_expression_diff
+        --deselect tests/test_black.py::BlackTestCase::test_read_pyproject_toml
+        --deselect tests/test_black.py::BlackTestCase::test_read_pyproject_toml_from_stdin
+        --deselect tests/test_black.py::BlackTestCase::test_skip_magic_trailing_comma
         --deselect tests/test_black.py::BlackTestCase::test_bpo_2142_workaround
+        # chroot UDS bug where getsockname returns the host path
+        --deselect tests/test_black.py::BlackTestCase::test_check_diff_use_together
+        --deselect tests/test_black.py::TestCaching::test_output_locking_when_writeback_diff
+    )
+    .testenv/bin/python3 -m pytest -vv "${skip_tests[@]}"
+
 }
 
 package() {
